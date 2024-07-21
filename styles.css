@@ -34,6 +34,7 @@ header {
 .content-wrapper {
     display: flex;
     flex: 1;
+    flex-direction: column-reverse;
 }
 
 main {
@@ -105,7 +106,21 @@ main {
 }
 
 @media (max-width: 1200px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
     #page-nav {
-        display: none;
+        position: relative;
+        top: auto;
+        right: auto;
+        height: auto;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    .nav-button {
+        flex: 1;
+        white-space: nowrap;
     }
 }
