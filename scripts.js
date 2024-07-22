@@ -1,7 +1,5 @@
 const viewer = document.getElementById('viewer');
 const pageNav = document.getElementById('page-nav');
-const navButtonsContainer = document.getElementById('nav-buttons');
-const toggleNavButton = document.getElementById('toggle-nav-button');
 const totalPages = 12;
 
 const pageImages = [
@@ -33,7 +31,7 @@ pageImages.forEach((src, index) => {
         document.getElementById(`page${index + 1}`).scrollIntoView({ behavior: 'smooth' });
         setActiveButton(button);
     };
-    navButtonsContainer.appendChild(button);
+    pageNav.appendChild(button);
 });
 
 function setActiveButton(activeButton) {
@@ -100,9 +98,4 @@ window.addEventListener('load', () => {
     if (pageNumber && pageNumber > 0 && pageNumber <= totalPages) {
         scrollToPage(pageNumber);
     }
-});
-
-// Toggle navigation visibility
-toggleNavButton.addEventListener('click', () => {
-    pageNav.classList.toggle('open');
 });
