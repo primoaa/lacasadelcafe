@@ -34,7 +34,7 @@ header {
 .content-wrapper {
     display: flex;
     flex: 1;
-    position: relative;
+    flex-direction: column-reverse;
 }
 
 main {
@@ -67,7 +67,7 @@ main {
 }
 
 #page-nav {
-    position: fixed;
+    position: sticky;
     top: 80px;
     right: 20px;
     display: flex;
@@ -77,10 +77,6 @@ main {
     padding: 1rem;
     height: calc(100vh - 80px);
     overflow-y: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 1001;
 }
 
 .nav-button {
@@ -110,11 +106,21 @@ main {
 }
 
 @media (max-width: 1200px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
     #page-nav {
-        right: 10px;
-        padding: 0.5rem;
+        position: relative;
+        top: auto;
+        right: auto;
+        height: auto;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
     }
     .nav-button {
-        font-size: 0.7rem;
+        flex: 1;
+        white-space: nowrap;
     }
 }
