@@ -7,13 +7,11 @@
     --nav-bg-color: rgba(255, 255, 255, 0.8);
     --nav-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -22,7 +20,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-
 header {
     background-color: var(--header-bg);
     color: var(--header-color);
@@ -32,13 +29,11 @@ header {
     top: 0;
     z-index: 1000;
 }
-
 .content-wrapper {
     display: flex;
     flex: 1;
     position: relative;
 }
-
 main {
     flex: 1;
     display: flex;
@@ -46,7 +41,6 @@ main {
     align-items: center;
     padding: 1rem;
 }
-
 #viewer {
     background-color: var(--viewer-bg);
     box-shadow: var(--nav-shadow);
@@ -56,22 +50,19 @@ main {
     max-width: 800px;
     padding: 1rem;
 }
-
 .page-image {
     width: 100%;
     height: auto;
     display: block;
     margin-bottom: 1rem;
 }
-
 .page-image:last-child {
     margin-bottom: 0;
 }
-
 #page-nav {
     position: fixed;
     top: 80px;
-    right: 0;
+    right: 10px;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -82,32 +73,35 @@ main {
     background-color: var(--nav-bg-color);
     box-shadow: var(--nav-shadow);
     border-radius: 8px 0 0 8px;
-    z-index: 1001;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
+    z-index: 1001; 
+    transition: right 0.3s ease-in-out;
 }
-
-#page-nav.open {
-    transform: translateX(0);
+#page-nav.hidden {
+    right: -200px; 
 }
-
 #toggle-nav-button {
+    position: fixed; 
+    top: 50%;         
+    right: 10px;      
+    transform: translateY(-50%); 
     background-color: var(--button-color);
     color: var(--header-color);
     border: none;
-    padding: 0.5rem;
+    padding: 0.8rem 0.5rem;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 4px;
-    margin-bottom: 1rem;
-    align-self: flex-start;
+    z-index: 1001; 
+    transition: transform 0.3s ease-in-out; 
+}
+#toggle-nav-button .arrow {
+    display: inline-block;
     transition: transform 0.3s ease-in-out;
 }
-
-#toggle-nav-button.open {
-    transform: translateX(-100%);
+/* Target the arrow directly when the nav is open */
+#page-nav:.hidden + #toggle-nav-button .arrow { 
+    transform: rotate(180deg); 
 }
-
 .nav-button {
     padding: 0.5rem;
     font-size: 0.8rem;
@@ -124,20 +118,16 @@ main {
     word-wrap: break-word;
     opacity: 0.7;
 }
-
 .nav-button:hover, .nav-button:focus {
     opacity: 1;
     outline: none;
 }
-
 .nav-button.active {
     opacity: 1;
 }
-
 .hidden {
-    display: none;
+    display: none; 
 }
-
 @media (max-width: 1200px) {
     #page-nav {
         right: 10px;
