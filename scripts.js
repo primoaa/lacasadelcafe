@@ -33,7 +33,7 @@ pageImages.forEach((src, index) => {
         document.getElementById(`page${index + 1}`).scrollIntoView({ behavior: 'smooth' });
         setActiveButton(button);
     };
-    navButtonsContainer.appendChild(button);
+    pageNav.appendChild(button);
 });
 
 function setActiveButton(activeButton) {
@@ -101,11 +101,19 @@ window.addEventListener('load', () => {
         scrollToPage(pageNumber);
     }
 });
-
 // Toggle navigation visibility
 toggleNavButton.addEventListener('click', () => {
-    pageNav.classList.toggle('open');
-    navButtonsContainer.classList.toggle('hidden');
-    toggleNavButton.classList.toggle('open');
-    toggleNavButton.innerHTML = pageNav.classList.contains('open') ? '&#x25C0;' : '&#x25B6;';
+    pageNav.classList.toggle('hidden');
+
+    // Toggle the arrow direction
+    const arrowSpan = toggleNavButton.querySelector('.arrow');
+    arrowSpan.textContent = arrowSpan.textContent === '▶' ? '◀' : '▶';
+
+   // Change the right property based on arrow direction
+    if (arrowSpan.textContent === '▶') {
+        toggleNavButton.style.right = '210px';
+    } else {
+        toggleNavButton.style.right = '10px';
+            
+    }
 });
